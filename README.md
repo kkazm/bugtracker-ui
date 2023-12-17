@@ -1,14 +1,12 @@
 # kkazm/bugtracker-ui
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+A bug tracker with a web-based user interface, similar to Jira and Bugzilla. This is the web client built with Angular. The corresponding REST web service source code is available [here](https://github.com/kkazm/bugtracker).
+
+Demo available online at <https://kkazm.ovh/bugtracker>
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 

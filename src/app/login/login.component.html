@@ -1,0 +1,111 @@
+<!--
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<!--
+  This example requires updating your template:
+
+  ```
+  <html class="h-full bg-white">
+  <body class="h-full">
+  ```
+-->
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <p class="mx-auto h-10 w-auto material-icons-outlined text-center block text-[50px] text-indigo-600">bug_report</p>
+    <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form class="space-y-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+        <div class="mt-2">
+          <input formControlName="username" id="username" name="username" autocomplete="username" required
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between">
+          <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+          <!-- TODO Forgot password -->
+          <!-- <div class="text-sm">
+            <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+          </div> -->
+        </div>
+        <div class="mt-2">
+          <input formControlName="password" id="password" name="password" type="password"
+            autocomplete="current-password" required
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+        </div>
+      </div>
+
+      <div>
+        <button type="submit" [disabled]="!loginForm.valid"
+          class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign
+          in</button>
+      </div>
+    </form>
+
+    <p class="mt-10 text-center text-sm text-gray-500">
+      Not a member?
+      <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Start a 14 day free trial</a>
+    </p>
+  </div>
+</div>
+
+<p class="material-icons md-light">settings</p>
+<span class="material-icons-outilned">&#xE87C;</span>
+<span class="material-icons-outlined">home bug_report</span>
+<i class="material-icons">donut_small</i>
+<i class="material-icons-outlined">donut_small</i>
+
+<span class="material-symbols-outlined">toggle_on</span>
+<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <label for="first-name">First Name: </label>
+  <input type="text" name="first-name" id="first-name" formControlName="firstName">
+
+  <label for="last-name">Last Name: </label>
+  <input type="text" name="last-name" id="last-name" formControlName="lastName">
+
+  <div formGroupName="address">
+    <h2>Address</h2>
+
+    <label for="street">Street: </label>
+    <input type="text" id="street" formControlName="street">
+
+    <label for="city">City: </label>
+    <input type="text" id="city" formControlName="city">
+
+    <label for="state">State: </label>
+    <input type="text" id="state" formControlName="state">
+
+    <label for="zip">Zip Code: </label>
+    <input type="text" id="zip" formControlName="zip">
+  </div>
+  <div formArrayName="aliases">
+    <h2>Aliases</h2>
+    <button type="button" (click)="addAlias()">+ Add another alias</button>
+    <div *ngFor="let alias of aliases.controls; let i = index">
+      <label for="alias-{{ i }}">Alias:</label>
+      <input id="alias-{{ i }}" type="text" [formControlName]="i">
+    </div>
+  </div>
+  <p>Complete the form to enable submition.</p>
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
+<button type="button" (click)="updateProfile()">Update Profile</button>
+<p>Form Status: {{ profileForm.status }}</p>
+<p>{{ profileForm.value | json }}</p>
