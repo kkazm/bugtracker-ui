@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export interface LoginCredentials {
@@ -31,7 +31,7 @@ export class AuthenticationService {
         },
         error: (err) => {
           // TODO Handle error
-          console.log(err);
+          console.error(err);
         }
       });
   }

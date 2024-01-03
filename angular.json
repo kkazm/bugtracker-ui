@@ -30,8 +30,10 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.scss"
+              // TODO Is default theme necessary?
+              // "@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/styles.scss",
+              "src/my-custom-material-theme.scss"
             ],
             "scripts": []
           },
@@ -91,8 +93,10 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.scss"
+              // TODO Is default theme necessary?
+              // "@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/styles.scss",
+              "src/my-custom-material-theme.scss"
             ],
             "scripts": []
           }
