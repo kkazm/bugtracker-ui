@@ -17,3 +17,19 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+a {
+    // @apply text-my-ng-theme-primary-color hover:text-my-ng-theme-primary-lighter-color;
+    @apply hover:text-my-ng-theme-primary-lighter-color;
+    text-decoration: none;
+}
+
+// a:visited {
+//     // TODO Which color?
+//     color: green;
+// }
+
+a.active {
+    // TODO Which color?
+    @apply text-pink-500;
+}

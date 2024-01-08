@@ -30,7 +30,7 @@
               "src/assets"
             ],
             "styles": [
-              // TODO Is default theme necessary?
+              // TODO Is the default theme necessary?
               // "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss",
               "src/my-custom-material-theme.scss"
@@ -93,7 +93,7 @@
               "src/assets"
             ],
             "styles": [
-              // TODO Is default theme necessary?
+              // TODO Is the default theme necessary?
               // "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss",
               "src/my-custom-material-theme.scss"
