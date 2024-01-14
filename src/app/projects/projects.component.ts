@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { MyTableComponent } from '../my-table/my-table.component';
+import { MyDragAndDropComponent } from '../my-drag-and-drop/my-drag-and-drop.component';
 
 export interface PeriodicElement {
   name: string;
@@ -39,11 +41,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
   imports: [
     RouterOutlet,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MyDragAndDropComponent,
+    MyTableComponent,
   ],
   templateUrl: './projects.component.html',
 })
 export class ProjectsComponent {
+
+  color = '';
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;

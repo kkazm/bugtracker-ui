@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    MatDividerModule
   ],
   templateUrl: './login.component.html',
 })
@@ -47,8 +49,8 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private authenticationService: AuthenticationService,
-    private router: Router
   ) {
   }
 
