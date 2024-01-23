@@ -20,10 +20,9 @@ body {
 
 a {
     // @apply text-my-ng-theme-primary-color hover:text-my-ng-theme-primary-lighter-color;
+    color: inherit;
     @apply hover:text-my-ng-theme-primary-lighter-color;
     text-decoration: none;
-    color: inherit;
-    text-decoration: inherit;
 }
 
 // a:visited {

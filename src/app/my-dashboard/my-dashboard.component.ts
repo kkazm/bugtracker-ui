@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { AsyncPipe } from '@angular/common';
+import { MatRippleModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-my-dashboard',
@@ -19,6 +20,7 @@ import { AsyncPipe } from '@angular/common';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    MatRippleModule,
     AsyncPipe
   ]
 })

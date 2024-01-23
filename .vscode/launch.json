@@ -3,9 +3,9 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch firefox",
       "type": "firefox",
       "request": "launch",
-      "name": "Launch localhost",
       "url": "http://localhost:4200/",
       "webRoot": "${workspaceFolder}"
     },

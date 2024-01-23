@@ -5,6 +5,8 @@ import { MatSortModule, MatSort } from '@angular/material/sort';
 import { MyTableDataSource, MyTableItem } from './my-table-datasource';
 import { CommonModule } from '@angular/common';
 import { CdkTableModule } from '@angular/cdk/table';
+import { MatRippleModule } from '@angular/material/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-my-table',
@@ -14,6 +16,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatRippleModule,
     CommonModule,
     CdkTableModule
   ]
@@ -24,9 +27,11 @@ export class MyTableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<MyTableItem>;
 
-  dataSource = new MyTableDataSource();
+  dataSource = new MyTableDataSource(this.http);
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'title'];
+
+  constructor(private http: HttpClient) { }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;

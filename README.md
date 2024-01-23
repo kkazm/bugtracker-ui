@@ -1,4 +1,4 @@
-# ![](https://fonts.gstatic.com/s/i/materialiconsoutlined/bug_report/v12/24px.svg) kkazm/bugtracker
+# ![](https://fonts.gstatic.com/s/i/materialiconsoutlined/bug_report/v12/24px.svg) kkazm/bugtracker-ui
 
 A bug tracker with a web-based user interface, similar to Jira and Bugzilla. This repository is the web client built with Angular.
 

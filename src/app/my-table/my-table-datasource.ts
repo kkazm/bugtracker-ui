@@ -1,39 +1,58 @@
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { delay, map, take, tap, throttleTime } from 'rxjs/operators';
+import { concatAll, concatMap, delay, map, retry, switchAll, switchMap, take, tap, throttleTime } from 'rxjs/operators';
 import { Observable, of, merge } from 'rxjs';
 import { Component, Directive, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 // TODO: Replace this with your own data model type
 export interface MyTableItem {
-  name: string;
+  title: string;
   id: number;
 }
 
-// TODO: replace this with real data from your application
 const EXAMPLE_DATA: MyTableItem[] = [
-  { id: 1, name: 'Hydrogen' },
-  { id: 2, name: 'Helium' },
-  { id: 3, name: 'Lithium' },
-  { id: 4, name: 'Beryllium' },
-  { id: 5, name: 'Boron' },
-  { id: 6, name: 'Carbon' },
-  { id: 7, name: 'Nitrogen' },
-  { id: 8, name: 'Oxygen' },
-  { id: 9, name: 'Fluorine' },
-  { id: 10, name: 'Neon' },
-  { id: 11, name: 'Sodium' },
-  { id: 12, name: 'Magnesium' },
-  { id: 13, name: 'Aluminum' },
-  { id: 14, name: 'Silicon' },
-  { id: 15, name: 'Phosphorus' },
-  { id: 16, name: 'Sulfur' },
-  { id: 17, name: 'Chlorine' },
-  { id: 18, name: 'Argon' },
-  { id: 19, name: 'Potassium' },
-  { id: 20, name: 'Calcium' },
+  { id: 1, title: 'Hydrogen' },
+  { id: 2, title: 'Helium' },
+  { id: 3, title: 'Lithium' },
+  { id: 4, title: 'Beryllium' },
+  { id: 5, title: 'Boron' },
+  { id: 6, title: 'Carbon' },
+  { id: 7, title: 'Nitrogen' },
+  { id: 8, title: 'Oxygen' },
+  { id: 9, title: 'Fluorine' },
+  { id: 10, title: 'Neon' },
+  { id: 11, title: 'Sodium' },
+  { id: 12, title: 'Magnesium' },
+  { id: 13, title: 'Aluminum' },
+  { id: 14, title: 'Silicon' },
+  { id: 15, title: 'Phosphorus' },
+  { id: 16, title: 'Sulfur' },
+  { id: 17, title: 'Chlorine' },
+  { id: 18, title: 'Argon' },
+  { id: 19, title: 'Potassium' },
+  { id: 20, title: 'Calcium' },
+  { id: 1, title: 'Hydrogen' },
+  { id: 2, title: 'Helium' },
+  { id: 3, title: 'Lithium' },
+  { id: 4, title: 'Beryllium' },
+  { id: 5, title: 'Boron' },
+  { id: 6, title: 'Carbon' },
+  { id: 7, title: 'Nitrogen' },
+  { id: 8, title: 'Oxygen' },
+  { id: 9, title: 'Fluorine' },
+  { id: 10, title: 'Neon' },
+  { id: 11, title: 'Sodium' },
+  { id: 12, title: 'Magnesium' },
+  { id: 13, title: 'Aluminum' },
+  { id: 14, title: 'Silicon' },
+  { id: 15, title: 'Phosphorus' },
+  { id: 16, title: 'Sulfur' },
+  { id: 17, title: 'Chlorine' },
+  { id: 18, title: 'Argon' },
+  { id: 19, title: 'Potassium' },
+  { id: 20, title: 'Calcium' },
 ];
 
 /**
@@ -46,10 +65,9 @@ export class MyTableDataSource extends DataSource<MyTableItem> {
   data: MyTableItem[] = EXAMPLE_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
-  // TODO
-  http: HttpClient = inject(HttpClient)
+  resultsLength = 0;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     super();
   }
 
@@ -64,14 +82,30 @@ export class MyTableDataSource extends DataSource<MyTableItem> {
       // stream for the data-table to consume.
       return merge(of(this.data), this.paginator.page, this.sort.sortChange)
         .pipe(
-          tap(value => {
-            console.log(value)
+          tap(val => {
+            console.log('Doing something') // TODO Delete this
           }),
-          map(() => {
-            // TODO Get data from backend
-            return this.getPagedData(this.getSortedData([...this.data]));
+          map((val) => {
+            if (!this.paginator) throw Error('Please set the paginator and sort on the data source before connecting.');
+            const per_page = this.paginator?.pageSize;
+            // const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+            const page = this.paginator?.pageIndex + 1; // TODO Plus one because GitHub
+            let sort = this.sort?.active ? this.sort?.active : 'created';
+            sort = 'created'
+            const direction = this.sort?.direction;
+            console.log(page, per_page, sort);
+            return this.http.get<MyTableItem[]>(
+              `https://api.github.com/repos/angular/angular/issues?page=${page}&per_page=${per_page}&sort=${sort}&state=all&direction=${direction}`,
+              { observe: 'response' }
+            ).pipe(
+              map(val => {
+                this.resultsLength = 3042
+                return val.body as MyTableItem[]
+              })
+            )
           }),
-        );
+          switchAll()
+        )
     } else {
       throw Error('Please set the paginator and sort on the data source before connecting.');
     }
@@ -83,39 +117,4 @@ export class MyTableDataSource extends DataSource<MyTableItem> {
    */
   disconnect(): void { }
 
-  /**
-   * Paginate the data (client-side). If you're using server-side pagination,
-   * this would be replaced by requesting the appropriate data from the server.
-   */
-  private getPagedData(data: MyTableItem[]): MyTableItem[] {
-    if (this.paginator) {
-      const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-      return data.splice(startIndex, this.paginator.pageSize);
-    } else {
-      return data;
-    }
-  }
-
-  /**
-   * Sort the data (client-side). If you're using server-side sorting,
-   * this would be replaced by requesting the appropriate data from the server.
-   */
-  private getSortedData(data: MyTableItem[]): MyTableItem[] {
-    if (!this.sort || !this.sort.active || this.sort.direction === '') {
-      return data;
-    }
-    return data.sort((a, b) => {
-      const isAsc = this.sort?.direction === 'asc';
-      switch (this.sort?.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
-        default: return 0;
-      }
-    });
-  }
-}
-
-/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a: string | number, b: string | number, isAsc: boolean): number {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
