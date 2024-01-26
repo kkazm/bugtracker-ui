@@ -1,18 +1,17 @@
+
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { concatAll, concatMap, delay, map, retry, switchAll, switchMap, take, tap, throttleTime } from 'rxjs/operators';
+import { map, switchAll, tap } from 'rxjs/operators';
 import { Observable, of, merge } from 'rxjs';
-import { Component, Directive, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// TODO: Replace this with your own data model type
-export interface MyTableItem {
+export interface ProjectsTableItem {
   title: string;
   id: number;
 }
 
-const EXAMPLE_DATA: MyTableItem[] = [
+const EXAMPLE_DATA: ProjectsTableItem[] = [
   { id: 1, title: 'Hydrogen' },
   { id: 2, title: 'Helium' },
   { id: 3, title: 'Lithium' },
@@ -60,9 +59,9 @@ const EXAMPLE_DATA: MyTableItem[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class MyTableDataSource extends DataSource<MyTableItem> {
+export class ProjectsTableDataSource extends DataSource<ProjectsTableItem> {
 
-  data: MyTableItem[] = EXAMPLE_DATA;
+  data: ProjectsTableItem[] = EXAMPLE_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
   resultsLength = 0;
@@ -76,7 +75,7 @@ export class MyTableDataSource extends DataSource<MyTableItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<MyTableItem[]> {
+  connect(): Observable<ProjectsTableItem[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -94,13 +93,13 @@ export class MyTableDataSource extends DataSource<MyTableItem> {
             sort = 'created'
             const direction = this.sort?.direction;
             console.log(page, per_page, sort);
-            return this.http.get<MyTableItem[]>(
+            return this.http.get<ProjectsTableItem[]>(
               `https://api.github.com/repos/angular/angular/issues?page=${page}&per_page=${per_page}&sort=${sort}&state=all&direction=${direction}`,
               { observe: 'response' }
             ).pipe(
               map(val => {
                 this.resultsLength = 3042
-                return val.body as MyTableItem[]
+                return val.body as ProjectsTableItem[]
               })
             )
           }),

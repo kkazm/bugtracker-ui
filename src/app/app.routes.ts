@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { ProjectsComponent } from './projects/projects.component';
 import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
 import { HttpTableComponent } from './http-table/http-table.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { UsersTableComponent } from './users-table/users-table.component';
+import { ProjectsTableComponent } from './projects-table/projects-table.component';
 
 export const routes: Routes = [
     {
@@ -30,7 +31,12 @@ export const routes: Routes = [
             {
                 path: 'projects',
                 title: 'Projects | Bugtracker',
-                component: ProjectsComponent
+                component: ProjectsTableComponent
+            },
+            {
+                path: 'users',
+                title: 'Users | Bugtracker',
+                component: UsersTableComponent
             },
             {
                 path: 'http',
