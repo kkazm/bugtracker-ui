@@ -40,5 +40,12 @@
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
     "typescript": "~5.2.2"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "printWidth": 240,
+    "htmlWhitespaceSensitivity": "ignore"
   }
 }
