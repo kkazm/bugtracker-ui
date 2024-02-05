@@ -2,11 +2,10 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
-import { HttpTableComponent } from './http-table/http-table.component';
+import { MyDashboardComponent } from './main/my-dashboard/my-dashboard.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { UsersTableComponent } from './users-table/users-table.component';
-import { ProjectsTableComponent } from './projects-table/projects-table.component';
+import { UsersTableComponent } from './main/users-table/users-table.component';
+import { ProjectsTableComponent } from './main/projects-table/projects-table.component';
 
 export const routes: Routes = [
     {
@@ -37,11 +36,6 @@ export const routes: Routes = [
                 path: 'users',
                 title: 'Users | Bugtracker',
                 component: UsersTableComponent
-            },
-            {
-                path: 'http',
-                title: 'HttpTable | Bugtracker',
-                component: HttpTableComponent
             },
         ]
     },

@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, of, throwError } from 'rxjs';
+import { Observable, catchError, of, tap, throwError } from 'rxjs';
 
 export interface LoginCredentials {
   username: string,
@@ -40,9 +40,17 @@ export class AuthenticationService {
     return this.http.post<{ token: string }>(
       this.baseUrl + '/signup', loginCredentials, { observe: 'response' }
     )
-      .pipe(
-        catchError(this.handleError)
-      );
+    // .pipe(
+    //   catchError(this.handleError)
+    // );
+  }
+
+  setAuthnToken(token: string): void {
+    localStorage.setItem('authnToken', token);
+  }
+
+  getAuthnToken(): string {
+    return localStorage.getItem('authnToken') || '';
   }
 
   private handleError(error: HttpErrorResponse) {

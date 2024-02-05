@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../service/authentication.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -51,6 +52,7 @@ export class LoginComponent {
     private fb: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
+    private snackBar: MatSnackBar
   ) {
   }
 
@@ -69,7 +71,8 @@ export class LoginComponent {
     this.authenticationService.login(this.loginForm.getRawValue())
       .subscribe({
         next: (data) => {
-          localStorage.setItem('authnToken', data.token);
+          this.authenticationService.setAuthnToken(data.token)
+          const snackBar = this.snackBar.open('Successfully logged in', 'Close', { duration: 4000, });
           this.router.navigate(['/']);
         },
         error: (err) => {

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, Validators, FormBuilder, FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,17 +9,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterLink, Router } from '@angular/router';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../service/authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
-import { LoginComponent } from '../login/login.component';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
   imports: [
-    CommonModule,
+    NgIf,
     ReactiveFormsModule,
     RouterLink,
     MatSlideToggleModule,
@@ -39,7 +37,7 @@ export class SignUpComponent {
     username: ['', { validators: [Validators.required, Validators.minLength(3)] }],
     password: ['', Validators.required]
   });
-  accountCreationError: boolean = false;
+  accountCreationError: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -50,26 +48,32 @@ export class SignUpComponent {
   }
 
   onSubmit() {
+    this.accountCreationError = '';
     this.authenticationService.signUp(this.signUpForm.getRawValue())
       .subscribe({
         next: (data) => {
-          console.log('Account created successfully')
-          data.body?.token ? localStorage.setItem('authnToken', data.body?.token) : null;
-          let snackBar = this.snackBar.open('Account created successfully', 'Close', { duration: 5000, });
+          data.body?.token ? this.authenticationService.setAuthnToken(data.body.token) : null;
+          const snackBar = this.snackBar.open('Account created successfully', 'Close', { duration: 4000, });
           this.router.navigate(['/']);
         },
         error: (err) => {
+          console.log("Type of error is " + AppComponent.myGetType(err));
           console.log('ACCOUNT CREATION FAILED')
-          // this.accountCreationError = err.message;
-          this.accountCreationError = true;
-          this.signUpForm.setErrors({ notUnique: true }) // TODO Weird but works
-          console.error(err.message);
+          console.log(err.message + " ERROR " + err.status);
+          switch (err.status) {
+            case 409:
+              this.accountCreationError = 'Username taken'
+              break;
+            default:
+              this.accountCreationError = 'Something went wrong, please try again later.';
+              break;
+          }
         }
       });
   }
 
   makeFormInvalid() {
-    this.signUpForm.setErrors({ 'invalid': true })
+    this.signUpForm.setErrors({ 'invalid': true }) // TODO Delete
   }
 
 }

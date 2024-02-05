@@ -19,15 +19,11 @@
   ```
 -->
 <div class="flex min-h-full flex-col justify-center">
-  <div class="flex items-center justify-center ">
+  <div class="flex items-center justify-center">
     <mat-card class="sm:mx-auto w-full sm:max-w-md border border-solid flex flex-col justify-center px-6 py-10">
       <mat-card-content>
-        
         <div>
-          <p
-            class="mx-auto h-10 w-auto text-center block text-[50px] text-my-ng-theme-primary-color material-icons-outlined ">
-            bug_report
-          </p>
+          <p class="mx-auto h-10 w-auto text-center block text-[50px] text-my-ng-theme-primary-color material-icons-outlined">bug_report</p>
           <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">Sign in to your account</h2>
         </div>
 
@@ -41,7 +37,7 @@
         </div> -->
               <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Username</mat-label>
-                <input matInput formControlName="username" required autocomplete="username">
+                <input matInput formControlName="username" required autocomplete="username" />
                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
                 <!-- <mat-hint>Hint</mat-hint> -->
               </mat-form-field>
@@ -62,20 +58,18 @@
         </div> -->
               <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Password</mat-label>
-                <input matInput type="password" formControlName="password" required autocomplete="current-password">
+                <input matInput type="password" formControlName="password" required autocomplete="current-password" />
                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
                 <!-- <mat-hint>Hint</mat-hint> -->
               </mat-form-field>
             </div>
 
-            <button mat-flat-button type="submit" color="primary" [disabled]="!loginForm.valid" class="w-full">Sign
-              in</button>
+            <button mat-flat-button type="submit" color="primary" [disabled]="!loginForm.valid" class="w-full">Sign in</button>
           </form>
 
           <p class="mt-10 text-center text-sm">
             Don't have an account?
-            <a routerLink="/signup" class="font-semibold leading-6 text-my-ng-theme-primary-color">Sign
-              up</a>
+            <a routerLink="/signup" class="font-semibold leading-6 text-my-ng-theme-primary-color">Sign up</a>
           </p>
         </div>
       </mat-card-content>
