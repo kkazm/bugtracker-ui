@@ -6,9 +6,9 @@
  * found in the LICENSE file at https://angular.dev/license
  */
 
-import {DOCUMENT, isPlatformBrowser} from '@angular/common';
-import {Injectable, PLATFORM_ID, inject, signal} from '@angular/core';
-import {Subject} from 'rxjs';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
+import { Subject } from 'rxjs';
 
 // Keep these constants in sync with the code in index.html
 
@@ -82,7 +82,9 @@ export class ThemeManager {
   private watchPreferedColorScheme() {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
       const preferedScheme = event.matches ? 'dark' : 'light';
-      this.setThemeBodyClasses(preferedScheme);
+      if (this.theme() === 'auto') {
+        this.setThemeBodyClasses(preferedScheme);
+      }
     });
   }
 }
