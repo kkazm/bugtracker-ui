@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Create a project</h2>
+<mat-dialog-content>
+  <form [formGroup]="createProjectForm" (ngSubmit)="onSubmit()" class="pt-1">
+    <div>
+      <mat-form-field>
+        <mat-label>Enter project name</mat-label>
+        <input matInput placeholder="Project name" formControlName="projectName" required />
+        <!-- @if (email.invalid) {
+        <mat-error>{{getErrorMessage()}}</mat-error>
+        } -->
+      </mat-form-field>
+    </div>
+
+    <button mat-flat-button type="submit" color="primary" [disabled]="!createProjectForm.valid">Create project</button>
+    <button mat-flat-button mat-dialog-close class="ml-1">Cancel</button>
+  </form>
+</mat-dialog-content>
+
+<!-- <mat-dialog-actions>
+  <button mat-stroked-button mat-dialog-close>Cancel</button>
+  The mat-dialog-close directive optionally accepts a value as a result for the dialog.
+  <button mat-stroked-button [mat-dialog-close]="true">Create project</button>
+</mat-dialog-actions> -->

@@ -52,7 +52,7 @@ export class SignUpComponent {
     this.authenticationService.signUp(this.signUpForm.getRawValue())
       .subscribe({
         next: (data) => {
-          data.body?.token ? this.authenticationService.setAuthnToken(data.body.token) : null;
+          data.body?.token ? this.authenticationService.setAuthToken(data.body.token) : null;
           const snackBar = this.snackBar.open('Account created successfully', 'Close', { duration: 4000, });
           this.router.navigate(['/']);
         },

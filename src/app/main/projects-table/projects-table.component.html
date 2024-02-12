@@ -1,4 +1,6 @@
-<div class="md:pb-16 md:px-8 md:pt-4">
+<button mat-flat-button color="primary" (click)="createProjectDialog()" class="mx-2">Create project</button>
+
+<div class="md:pb-16 md:px-8 pt-4">
   <div class="mat-elevation-z8">
     <table mat-table class="full-width-table" matSort aria-label="Elements">
       <!-- Id Column -->
@@ -17,15 +19,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
 
-    <mat-paginator
-      showFirstLastButtons
-      #paginator
-      [length]="dataSource.data.length"
-      [pageIndex]="0"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 20]"
-      aria-label="Select page"
-    ></mat-paginator>
+    <mat-paginator showFirstLastButtons #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" aria-label="Select page"></mat-paginator>
   </div>
   <button (click)="changeTheme()">Change theme</button>
 </div>

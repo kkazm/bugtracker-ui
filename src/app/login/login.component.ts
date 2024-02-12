@@ -71,7 +71,7 @@ export class LoginComponent {
     this.authenticationService.login(this.loginForm.getRawValue())
       .subscribe({
         next: (data) => {
-          this.authenticationService.setAuthnToken(data.token)
+          this.authenticationService.setAuthToken(data.token)
           const snackBar = this.snackBar.open('Successfully logged in', 'Close', { duration: 4000, });
           this.router.navigate(['/']);
         },

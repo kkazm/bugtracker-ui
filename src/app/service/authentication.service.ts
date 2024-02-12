@@ -29,11 +29,11 @@ export class AuthenticationService {
   }
 
   logout(): void {
-    localStorage.removeItem('authnToken');
+    localStorage.removeItem('authToken');
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('authnToken');
+    return !!localStorage.getItem('authToken');
   }
 
   signUp(loginCredentials: LoginCredentials): Observable<HttpResponse<{ token: string }>> {
@@ -45,12 +45,12 @@ export class AuthenticationService {
     // );
   }
 
-  setAuthnToken(token: string): void {
-    localStorage.setItem('authnToken', token);
+  setAuthToken(token: string): void {
+    localStorage.setItem('authToken', token);
   }
 
-  getAuthnToken(): string {
-    return localStorage.getItem('authnToken') || '';
+  getAuthToken(): string {
+    return localStorage.getItem('authToken') || '';
   }
 
   private handleError(error: HttpErrorResponse) {

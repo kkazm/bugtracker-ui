@@ -22,7 +22,6 @@
               <a routerLink="/projects" routerLinkActive="active" class="rounded-md px-3 py-2 text-base">Projects</a>
               <a routerLink="/team" routerLinkActive="active" class="rounded-md px-3 py-2 text-base">Team</a>
               <a routerLink="/users" routerLinkActive="active" class="rounded-md px-3 py-2 text-base">Users</a>
-              <a routerLink="/http" routerLinkActive="active" class="rounded-md px-3 py-2 text-base">Http table</a>
             </div>
           </div>
         </div>
@@ -62,14 +61,14 @@
           <div *ngIf="!authService.isLoggedIn()" class="hidden md:block">
             <a mat-stroked-button color="primary" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page" class="text-base mr-2 mt-4 md:mt-0">
               <mat-icon>login</mat-icon>
-              Login
+              Sign in
             </a>
           </div>
 
           <div *ngIf="authService.isLoggedIn()" class="hidden md:block">
             <button (click)="authService.logout()" mat-stroked-button color="primary" class="text-base mr-2 mt-4 md:mt-0">
               <mat-icon>logout</mat-icon>
-              Logout
+              Sign out
             </button>
           </div>
         </div>
@@ -125,7 +124,7 @@
   </nav>
 
   <main>
-    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl py-4 sm:px-6 lg:px-8">
       <router-outlet></router-outlet>
     </div>
   </main>
