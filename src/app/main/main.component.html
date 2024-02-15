@@ -66,7 +66,7 @@
           </div>
 
           <div *ngIf="authService.isLoggedIn()" class="hidden md:block">
-            <button (click)="authService.logout()" mat-stroked-button color="primary" class="text-base mr-2 mt-4 md:mt-0">
+            <button (click)="logout()" mat-stroked-button color="primary" class="text-base mr-2 mt-4 md:mt-0">
               <mat-icon>logout</mat-icon>
               Sign out
             </button>

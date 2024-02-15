@@ -6,6 +6,8 @@ import { MyDashboardComponent } from './main/my-dashboard/my-dashboard.component
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UsersTableComponent } from './main/users-table/users-table.component';
 import { ProjectsTableComponent } from './main/projects-table/projects-table.component';
+import { ProjectPageComponent } from './main/project-page/project-page.component';
+import { UserPageComponent } from './main/user-page/user-page.component';
 
 export const routes: Routes = [
     {
@@ -33,9 +35,19 @@ export const routes: Routes = [
                 component: ProjectsTableComponent
             },
             {
+                path: 'projects/:id',
+                component: ProjectPageComponent,
+                title: 'Project view | Bugtracker'
+            },
+            {
                 path: 'users',
                 title: 'Users | Bugtracker',
                 component: UsersTableComponent
+            },
+            {
+                path: 'users/:id',
+                component: UserPageComponent,
+                title: 'User :id | Bugtracker'
             },
         ]
     },

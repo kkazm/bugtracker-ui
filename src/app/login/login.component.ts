@@ -72,7 +72,7 @@ export class LoginComponent {
       .subscribe({
         next: (data) => {
           this.authenticationService.setAuthToken(data.token)
-          const snackBar = this.snackBar.open('Successfully logged in', 'Close', { duration: 4000, });
+          const snackBar = this.snackBar.open('Successfully signed in', 'Close', { duration: 4000 });
           this.router.navigate(['/']);
         },
         error: (err) => {

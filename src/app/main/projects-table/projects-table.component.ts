@@ -19,10 +19,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ProjectService } from '../../service/project.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-
-export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
-}
+import { AuthenticationService } from '../../service/authentication.service';
+import { Router, RouterLink } from '@angular/router';
+import { MatRippleModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-projects-table',
@@ -30,10 +29,12 @@ export interface DialogData {
   styleUrls: ['./projects-table.component.scss'],
   standalone: true,
   imports: [
+    RouterLink,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRippleModule,
   ]
 })
 export class ProjectsTableComponent implements AfterViewInit {
@@ -44,11 +45,14 @@ export class ProjectsTableComponent implements AfterViewInit {
   dataSource = new ProjectsTableDataSource(this.http);
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'title'];
+  displayedColumns = ['id', 'name', 'owner'];
 
   constructor(
     private http: HttpClient,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private authenticationService: AuthenticationService,
+    public router: Router,
+    private snackBar: MatSnackBar
   ) {
   }
 
@@ -59,7 +63,12 @@ export class ProjectsTableComponent implements AfterViewInit {
   }
 
   createProjectDialog() {
-    this.dialog.open(CreateProjectDialog);
+    if (this.authenticationService.isLoggedIn()) {
+      this.dialog.open(CreateProjectDialog);
+    } else {
+      this.snackBar.open('Sign in to create a project', 'Close', { duration: 5000 });
+      this.router.navigate(['/login']);
+    }
   }
 
   /**
@@ -101,10 +110,11 @@ export class CreateProjectDialog {
 
   constructor(
     public dialogRef: MatDialogRef<CreateProjectDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    // @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private fb: FormBuilder,
     private projectService: ProjectService,
     private snackBar: MatSnackBar,
+    private router: Router,
   ) {
   }
 
@@ -115,6 +125,7 @@ export class CreateProjectDialog {
         next: (res) => {
           this.dialogRef.close();
           this.snackBar.open('Project created successfully', 'Close', { duration: 4000 });
+          this.router.navigate(['/projects', res.id]);
         },
         error: (err) => {
           console.error(err);
