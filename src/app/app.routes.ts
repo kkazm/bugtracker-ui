@@ -8,12 +8,20 @@ import { UsersTableComponent } from './main/users-table/users-table.component';
 import { ProjectsTableComponent } from './main/projects-table/projects-table.component';
 import { ProjectPageComponent } from './main/project-page/project-page.component';
 import { UserPageComponent } from './main/user-page/user-page.component';
+import { IssuesComponent } from './main/project-page/issues/issues.component';
+import { BoardComponent } from './main/project-page/board/board.component';
+import { MyDragAndDropComponent } from './my-drag-and-drop/my-drag-and-drop.component';
 
 export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
         title: 'Login | Bugtracker'
+    },
+    {
+        path: 'drag',
+        component: MyDragAndDropComponent,
+        title: 'Drag and drop | Bugtracker'
     },
     {
         path: 'signup',
@@ -37,7 +45,19 @@ export const routes: Routes = [
             {
                 path: 'projects/:id',
                 component: ProjectPageComponent,
-                title: 'Project view | Bugtracker'
+                title: 'Project page | Bugtracker',
+                children: [
+                    {
+                        path: '',
+                        component: IssuesComponent,
+                        title: 'Issues page | Bugtracker',
+                    },
+                    {
+                        path: 'board',
+                        component: BoardComponent,
+                        title: 'Board page | Bugtracker',
+                    }
+                ]
             },
             {
                 path: 'users',

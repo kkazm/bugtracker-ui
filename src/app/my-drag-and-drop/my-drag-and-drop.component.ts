@@ -9,6 +9,7 @@ import { CdkDrag, CdkDropList, CdkDragDrop, moveItemInArray, transferArrayItem }
   imports: [CdkDrag, CdkDropList]
 })
 export class MyDragAndDropComponent {
+
   todo = [
     'Get to work',
     'Pick up groceries',
@@ -29,9 +30,10 @@ export class MyDragAndDropComponent {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex);
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
     }
   }
+
 }
