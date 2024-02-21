@@ -4,13 +4,12 @@ import { MatSort } from '@angular/material/sort';
 import { map, switchAll, tap } from 'rxjs/operators';
 import { Observable, of, merge } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ConfigService } from '../../service/config.service';
-import { inject } from '@angular/core';
-import { ProjectService } from '../../service/project.service';
+import { IssueService } from '../../../service/issue.service';
 
-export interface ProjectsTableItem {
-  name: string,
+export interface IssuesTableItem {
   id: number,
+  title: string,
+  createdAt: string,
 }
 
 /**
@@ -18,15 +17,19 @@ export interface ProjectsTableItem {
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ProjectsTableDataSource extends DataSource<ProjectsTableItem> {
+export class IssuesTableDataSource extends DataSource<IssuesTableItem> {
 
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
   resultsLength = 0;
-  projectService = inject(ProjectService);
+  // issueService = inject(IssueService);
+  projectId!: number 
+  newestIssueId: number | undefined
+  firstDownload: boolean = true;
 
   constructor(
     private http: HttpClient,
+    private issueService: IssueService,
   ) {
     super();
   }
@@ -36,7 +39,7 @@ export class ProjectsTableDataSource extends DataSource<ProjectsTableItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<ProjectsTableItem[]> {
+  connect(): Observable<IssuesTableItem[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -53,10 +56,14 @@ export class ProjectsTableDataSource extends DataSource<ProjectsTableItem> {
             let sort = this.sort?.active ? this.sort?.active : 'created';
             const direction = this.sort?.direction ? this.sort?.direction : 'desc';
             console.log(page, per_page, sort);
-            return this.projectService.getAllPublicProjects(page, per_page, sort, direction)
+            return this.issueService.getAllProjectIssues(this.projectId, page, per_page, sort, direction)
               .pipe(
                 map(data => {
                   this.resultsLength = data.totalElements;
+                  if (this.firstDownload) {
+                    this.newestIssueId = data.content[0].id;
+                    this.firstDownload = false;
+                  }
                   return data.content;
                 })
               )

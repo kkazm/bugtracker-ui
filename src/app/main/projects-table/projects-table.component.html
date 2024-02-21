@@ -22,12 +22,11 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr [routerLink]="['/projects', row.id]" mat-row *matRowDef="let row; columns: displayedColumns" class="cursor-pointer hover:bg-my-ng-theme-menu-item-hover-state-layer-color"></tr>
+      <tr [routerLink]="['/projects', row.id, 'issues']" mat-row *matRowDef="let row; columns: displayedColumns" class="cursor-pointer hover:bg-my-ng-theme-menu-item-hover-state-layer-color"></tr>
 
     </table>
 
-    <mat-paginator showFirstLastButtons #paginator [length]="dataSource.resultsLength" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" aria-label="Select page"></mat-paginator>
+    <mat-paginator showFirstLastButtons #paginator [length]="dataSource.resultsLength" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[2, 5, 10, 20]" aria-label="Select page"></mat-paginator>
   </div>
 
-  <button class="my-9" (click)="changeTheme()">Change theme</button>
 </div>

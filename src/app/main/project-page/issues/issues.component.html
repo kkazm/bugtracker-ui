@@ -1,1 +1,27 @@
-<p>issues works!</p>
+<!-- <button mat-flat-button color="primary" (click)="createProjectDialog()" class="mx-2">Create project</button> -->
+
+<div class="md:flex md:pb-8 md:px-4 pt-4">
+  <div class="md:flex-grow-[2] basis-0 mat-elevation-z2">
+    <div class="overflow-auto max-h-[60vh]">
+      <table mat-table class="full-width-table" matSort aria-label="Elements">
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Sort by creation time</th>
+          <td mat-cell *matCellDef="let row" matRipple>
+            <b>{{ row.title }}</b>
+            <br />
+            {{ row.description | slice : 0 : 80 }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr [routerLink]="[row.id]" mat-row *matRowDef="let row; columns: displayedColumns" class="cursor-pointer hover:bg-my-ng-theme-menu-item-hover-state-layer-color"></tr>
+      </table>
+    </div>
+
+    <mat-paginator #paginator [length]="dataSource.resultsLength" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[2, 5, 10, 20]" aria-label="Select page"></mat-paginator>
+  </div>
+
+  <div class="md:flex-grow-[5] basis-0 p-2">
+    <router-outlet></router-outlet>
+  </div>
+</div>
