@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, of, tap, throwError } from 'rxjs';
+import { ConfigService } from './config.service';
 
 export interface LoginCredentials {
   username: string,
@@ -20,12 +21,14 @@ const httpOptions = {
 export class AuthenticationService {
 
   // private jwt$ = new BehaviorSubject<string>('');
-  private readonly baseUrl = 'http://localhost:8080'
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private configService: ConfigService
+  ) { }
 
   login(loginCredentials: LoginCredentials): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>(this.baseUrl + '/login', loginCredentials);
+    return this.http.post<{ token: string }>(this.configService.apiUrl + '/login', loginCredentials);
   }
 
   logout(): void {
@@ -38,7 +41,7 @@ export class AuthenticationService {
 
   signUp(loginCredentials: LoginCredentials): Observable<HttpResponse<{ token: string }>> {
     return this.http.post<{ token: string }>(
-      this.baseUrl + '/signup', loginCredentials, { observe: 'response' }
+      this.configService.apiUrl + '/signup', loginCredentials, { observe: 'response' }
     )
     // .pipe(
     //   catchError(this.handleError)

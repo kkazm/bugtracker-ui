@@ -22,8 +22,7 @@ export class IssuesTableDataSource extends DataSource<IssuesTableItem> {
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
   resultsLength = 0;
-  // issueService = inject(IssueService);
-  projectId!: number 
+  projectId!: number
   newestIssueId: number | undefined
   firstDownload: boolean = true;
 

@@ -4,6 +4,8 @@ A bug tracker with a web-based user interface, similar to Jira and Bugzilla. Thi
 
 The corresponding REST web service source code is [available here](https://github.com/kkazm/bugtracker).
 
+By default, the application expects a REST API at `http://localhost:8080`. This can be changed in the configuration file: [tsconfig.json](tsconfig.json).
+
 **Demo available online at <https://kkazm.ovh/bugtracker>**
 
 ## Development server

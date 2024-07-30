@@ -10,6 +10,7 @@ import { ProjectPageComponent } from './main/project-page/project-page.component
 import { UserPageComponent } from './main/user-page/user-page.component';
 import { KanbanComponent } from './main/project-page/kanban/kanban.component';
 import { IssuesComponent } from './main/project-page/issues/issues.component';
+import { IssueDetailsComponent } from './main/project-page/issues/issue-details/issue-details.component';
 
 export const routes: Routes = [
     {
@@ -41,6 +42,11 @@ export const routes: Routes = [
                 component: ProjectPageComponent,
                 title: 'Project page | Bugtracker',
                 children: [
+                    { // Redirect to default child component
+                        path: '',
+                        pathMatch: 'full',
+                        redirectTo: 'issues'
+                    },
                     {
                         path: 'issues',
                         component: IssuesComponent,
@@ -48,7 +54,7 @@ export const routes: Routes = [
                         children: [
                             {
                                 path: ':issueId',
-                                component: IssuesComponent,
+                                component: IssueDetailsComponent,
                                 title: 'Issues page | Bugtracker',
                             }
                         ]

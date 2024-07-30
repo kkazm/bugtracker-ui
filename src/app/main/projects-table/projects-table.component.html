@@ -1,3 +1,6 @@
+<h1>Projects</h1>
+<p>Select a project or create a new one</p>
+
 <button mat-flat-button color="primary" (click)="createProjectDialog()" class="mx-2">Create project</button>
 
 <div class="md:pb-16 md:px-8 pt-4">
@@ -22,11 +25,13 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr [routerLink]="['/projects', row.id, 'issues']" mat-row *matRowDef="let row; columns: displayedColumns" class="cursor-pointer hover:bg-my-ng-theme-menu-item-hover-state-layer-color"></tr>
+      <tr [routerLink]="['/projects', row.id, 'issues']" mat-row *matRowDef="let row; columns: displayedColumns"
+        class="cursor-pointer hover:bg-my-ng-theme-menu-item-hover-state-layer-color"></tr>
 
     </table>
 
-    <mat-paginator showFirstLastButtons #paginator [length]="dataSource.resultsLength" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[2, 5, 10, 20]" aria-label="Select page"></mat-paginator>
+    <mat-paginator showFirstLastButtons #paginator [length]="dataSource.resultsLength" [pageIndex]="0" [pageSize]="10"
+      [pageSizeOptions]="[2, 5, 10, 20]" aria-label="Select page"></mat-paginator>
   </div>
 
 </div>

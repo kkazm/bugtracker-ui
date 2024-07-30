@@ -19,9 +19,9 @@ export class ProjectService {
     return this.http.post<{ id: number, name: string }>(this.configService.apiUrl + '/projects', { projectName: projectName });
   }
 
-  getAllPublicProjects(page: number, per_page: number, sort: string, direction: string) {
+  getAllPublicProjects(page: number, size: number, sort: string, direction: string) {
     return this.http.get<Page<any>>(
-      `${this.configService.apiUrl}/projects?page=${page}&per_page=${per_page}&sort=${sort}&direction=${direction}`
+      `${this.configService.apiUrl}/projects?page=${page}&size=${size}&sort=${sort}&direction=${direction}`
     )
   }
 

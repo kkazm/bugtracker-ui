@@ -24,7 +24,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { UsersTableDataSource, UsersTableItem } from './users-table-datasource';
 
 @Component({
-  selector: 'app-projects-table',
+  selector: 'app-users-table',
   templateUrl: './users-table.component.html',
   styleUrls: ['./users-table.component.scss'],
   standalone: true,
