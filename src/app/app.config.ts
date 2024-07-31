@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { authenticationInterceptor } from './authentication.interceptor';
 import { provideDateFnsAdapter } from '@angular/material-date-fns-adapter';
