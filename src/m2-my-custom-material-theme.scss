@@ -1,0 +1,65 @@
+
+// Old material 2 theme
+
+
+
+@use '@angular/material' as mat;
+
+// TODO Do the below when theme is ready
+// https://tailwindcss.com/docs/customizing-colors#color-object-syntax
+
+// Custom Angular theme below
+
+@include mat.core();
+
+// Define a light theme
+$light-theme: mat.m2-define-light-theme(( //
+            color: ( //
+                primary: mat.m2-define-palette(mat.$m2-blue-palette), //
+                accent: mat.m2-define-palette(mat.$m2-pink-palette),
+            ),
+            // Only include `typography` and `density` in the default theme.
+            typography: mat.m2-define-typography-config(),
+            density: 0,
+        ));
+
+// Define a dark theme
+$dark-theme: mat.m2-define-dark-theme(( //
+            color: ( //
+                primary: mat.m2-define-palette(mat.$m2-pink-palette), //
+                accent: mat.m2-define-palette(mat.$m2-blue-grey-palette),
+            ),
+        ));
+
+// The "warn" palette is optional and defaults to red if not specified.
+// $my-warn: mat.define-palette(mat.$red-palette);
+
+// TODO Define foreground and backgroud palettes
+// https://stackoverflow.com/questions/43919927/angular-material2-theming-how-to-set-app-background
+// https://fireflysemantics.medium.com/changing-the-angular-material-theme-background-color-893b03c2925d
+// foreground: 0,
+// background: 0
+
+// Apply the light theme by default
+// @include mat.core-theme($light-theme);
+// @include mat.button-theme($light-theme);
+@include mat.all-component-themes($light-theme);
+
+// Apply the dark theme only when the user prefers dark themes.
+// @media (prefers-color-scheme: dark) {
+.app-dark-mode {
+    // Use the `-color` mixins to only apply color styles without reapplying the same
+    // typography and density styles.
+    // @include mat.core-color($dark-theme);
+    // @include mat.button-color($dark-theme);
+    @include mat.all-component-colors($dark-theme);
+}
+
+// Include typography (see prebuilt theme source code)
+@include mat.typography-hierarchy($light-theme);
+
+$warn-color: mat.get-theme-color($light-theme, 'warn', default);
+
+:root {
+    --warn-color: #{$warn-color};
+}
