@@ -10,19 +10,23 @@
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
+// .app-dark-mode .ql-formats .ql-picker {
+//   color: #ff00d9;
+// }
+
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 a {
-    // @apply text-my-ng-theme-primary-color hover:text-my-ng-theme-primary-lighter-color;
-    color: inherit;
-    @apply hover:text-my-ng-theme-primary-lighter-color;
-    text-decoration: none;
+  // @apply text-my-ng-theme-primary-color hover:text-my-ng-theme-primary-lighter-color;
+  color: inherit;
+  @apply hover:text-my-ng-theme-primary-lighter-color;
+  text-decoration: none;
 }
 
 // a:visited {
@@ -31,5 +35,5 @@ a {
 // }
 
 a.active {
-    @apply text-my-ng-theme-accent-color;
+  @apply text-my-ng-theme-accent-color;
 }

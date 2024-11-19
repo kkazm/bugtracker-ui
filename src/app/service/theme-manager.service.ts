@@ -27,7 +27,8 @@ export class ThemeManager {
   private readonly platformId = inject(PLATFORM_ID);
 
   readonly theme = signal<Theme | null>(this.getThemeFromLocalStorageValue());
-  // Zoneless - it's required to notify that theme was changed. It could be removed when signal-based components will be available.
+  // Zoneless - it's required to notify that theme was changed. It could be
+  // removed when signal-based components will be available.
   readonly themeChanged$ = new Subject<void>();
 
   constructor() {
