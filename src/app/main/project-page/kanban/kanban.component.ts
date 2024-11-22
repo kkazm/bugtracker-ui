@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { CdkDrag, CdkDropList, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'app-kanban',
-  templateUrl: './kanban.component.html',
-  styleUrl: './kanban.component.scss',
-  standalone: true,
-  imports: [CdkDrag, CdkDropList]
+    selector: 'app-kanban',
+    templateUrl: './kanban.component.html',
+    styleUrl: './kanban.component.scss',
+    imports: [CdkDrag, CdkDropList]
 })
 export class KanbanComponent {
 

@@ -11,23 +11,22 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-project-page',
-  standalone: true,
-  templateUrl: './project-page.component.html',
-  styleUrl: './project-page.component.scss',
-  imports: [
-    MatSidenavModule,
-    MatButtonModule,
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    MatTooltipModule,
-    MatListModule,
-    MatIconModule,
-    MatCardModule,
-    AsyncPipe,
-    CommonModule,
-  ]
+    selector: 'app-project-page',
+    templateUrl: './project-page.component.html',
+    styleUrl: './project-page.component.scss',
+    imports: [
+        MatSidenavModule,
+        MatButtonModule,
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+        MatTooltipModule,
+        MatListModule,
+        MatIconModule,
+        MatCardModule,
+        AsyncPipe,
+        CommonModule,
+    ]
 })
 export class ProjectPageComponent implements OnInit {
 

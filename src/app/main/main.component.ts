@@ -12,21 +12,20 @@ import { Theme, ThemeManager } from '../service/theme-manager.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-main',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    MatButtonModule,
-    MatIconModule,
-    CdkMenuModule,
-    MatMenuModule,
-    MatDividerModule,
-    MatTooltipModule
-  ],
-  templateUrl: './main.component.html',
+    selector: 'app-main',
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+        MatButtonModule,
+        MatIconModule,
+        CdkMenuModule,
+        MatMenuModule,
+        MatDividerModule,
+        MatTooltipModule
+    ],
+    templateUrl: './main.component.html'
 })
 export class MainComponent {
 

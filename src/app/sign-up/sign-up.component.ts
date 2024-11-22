@@ -14,22 +14,21 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppComponent } from '../app.component';
 
 @Component({
-  selector: 'app-sign-up',
-  standalone: true,
-  imports: [
-    NgIf,
-    ReactiveFormsModule,
-    RouterLink,
-    MatSlideToggleModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatDividerModule,
-  ],
-  templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.scss'
+    selector: 'app-sign-up',
+    imports: [
+        NgIf,
+        ReactiveFormsModule,
+        RouterLink,
+        MatSlideToggleModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCardModule,
+        MatDividerModule,
+    ],
+    templateUrl: './sign-up.component.html',
+    styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent {
 

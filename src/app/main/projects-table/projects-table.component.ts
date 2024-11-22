@@ -24,18 +24,17 @@ import { Router, RouterLink } from '@angular/router';
 import { MatRippleModule } from '@angular/material/core';
 
 @Component({
-  selector: 'app-projects-table',
-  templateUrl: './projects-table.component.html',
-  styleUrls: ['./projects-table.component.scss'],
-  standalone: true,
-  imports: [
-    RouterLink,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatButtonModule,
-    MatRippleModule,
-  ]
+    selector: 'app-projects-table',
+    templateUrl: './projects-table.component.html',
+    styleUrls: ['./projects-table.component.scss'],
+    imports: [
+        RouterLink,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatButtonModule,
+        MatRippleModule,
+    ]
 })
 export class ProjectsTableComponent implements AfterViewInit {
 
@@ -86,21 +85,20 @@ export class ProjectsTableComponent implements AfterViewInit {
 }
 
 @Component({
-  selector: 'dialog-data-example-dialog',
-  templateUrl: './create-project-dialog.html',
-  standalone: true,
-  imports: [
-    MatButton,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatDialogActions,
-    MatDialogClose,
-    MatSnackBarModule,
-    ReactiveFormsModule,
-  ],
+    selector: 'dialog-data-example-dialog',
+    templateUrl: './create-project-dialog.html',
+    imports: [
+        MatButton,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDialogTitle,
+        MatDialogContent,
+        MatDialogActions,
+        MatDialogActions,
+        MatDialogClose,
+        MatSnackBarModule,
+        ReactiveFormsModule,
+    ]
 })
 export class CreateProjectDialog {
 

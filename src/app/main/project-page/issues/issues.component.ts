@@ -12,20 +12,19 @@ import { IssueService } from '../../../service/issue.service';
 import { IssuesTableDataSource, IssuesTableItem } from './issues-table-datasource';
 
 @Component({
-  selector: 'app-issues',
-  templateUrl: './issues.component.html',
-  styleUrls: ['./issues.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    RouterLink,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatButtonModule,
-    MatRippleModule,
-  ]
+    selector: 'app-issues',
+    templateUrl: './issues.component.html',
+    styleUrls: ['./issues.component.scss'],
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        RouterLink,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatButtonModule,
+        MatRippleModule,
+    ]
 })
 export class IssuesComponent implements AfterViewInit, OnInit {
 

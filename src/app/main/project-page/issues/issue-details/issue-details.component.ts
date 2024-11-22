@@ -12,21 +12,20 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import Quill from 'quill';
 
 @Component({
-  selector: 'app-issue-details',
-  standalone: true,
-  imports: [
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatDatepickerModule,
-    MatDateFnsModule,
-    JsonPipe,
-    DatePipe,
-    ReactiveFormsModule,
-  ],
-  templateUrl: './issue-details.component.html',
-  styleUrl: './issue-details.component.scss'
+    selector: 'app-issue-details',
+    imports: [
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatDatepickerModule,
+        MatDateFnsModule,
+        JsonPipe,
+        DatePipe,
+        ReactiveFormsModule,
+    ],
+    templateUrl: './issue-details.component.html',
+    styleUrl: './issue-details.component.scss'
 })
 export class IssueDetailsComponent implements OnInit {
 

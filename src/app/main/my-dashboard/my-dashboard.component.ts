@@ -10,19 +10,18 @@ import { AsyncPipe } from '@angular/common';
 import { MatRippleModule } from '@angular/material/core';
 
 @Component({
-  selector: 'app-my-dashboard',
-  templateUrl: './my-dashboard.component.html',
-  styleUrls: ['./my-dashboard.component.scss'],
-  standalone: true,
-  imports: [
-    MatGridListModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatRippleModule,
-    AsyncPipe
-  ]
+    selector: 'app-my-dashboard',
+    templateUrl: './my-dashboard.component.html',
+    styleUrls: ['./my-dashboard.component.scss'],
+    imports: [
+        MatGridListModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCardModule,
+        MatRippleModule,
+        AsyncPipe
+    ]
 })
 export class MyDashboardComponent {
 

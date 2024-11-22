@@ -24,18 +24,17 @@ import { MatRippleModule } from '@angular/material/core';
 import { UsersTableDataSource, UsersTableItem } from './users-table-datasource';
 
 @Component({
-  selector: 'app-users-table',
-  templateUrl: './users-table.component.html',
-  styleUrls: ['./users-table.component.scss'],
-  standalone: true,
-  imports: [
-    RouterLink,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatButtonModule,
-    MatRippleModule,
-  ]
+    selector: 'app-users-table',
+    templateUrl: './users-table.component.html',
+    styleUrls: ['./users-table.component.scss'],
+    imports: [
+        RouterLink,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatButtonModule,
+        MatRippleModule,
+    ]
 })
 export class UsersTableComponent implements AfterViewInit {
 

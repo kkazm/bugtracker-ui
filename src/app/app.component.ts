@@ -17,17 +17,16 @@ export type Page<T> = {
 }
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    MatSlideToggleModule,
-    MatIconModule
-  ],
-  templateUrl: './app.component.html',
+    selector: 'app-root',
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+        MatSlideToggleModule,
+        MatIconModule
+    ],
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
 
