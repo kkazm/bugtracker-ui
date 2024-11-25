@@ -1,9 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-/*
- * NOTE, TODO: Colors from the Angular Material custom theme are available in
- * the TailwindCSS theme. See file tailwind.config.js. 
- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,10 +8,6 @@ html,
 body {
   height: 100%;
 }
-
-// .app-dark-mode .ql-formats .ql-picker {
-//   color: #ff00d9;
-// }
 
 body {
   margin: 0;
@@ -30,7 +22,6 @@ a {
 }
 
 // a:visited {
-//     // TODO Which color?
 //     color: green;
 // }
 

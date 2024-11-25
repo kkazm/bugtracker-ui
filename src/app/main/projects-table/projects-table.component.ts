@@ -93,8 +93,6 @@ export class ProjectsTableComponent implements AfterViewInit {
         MatInputModule,
         MatDialogTitle,
         MatDialogContent,
-        MatDialogActions,
-        MatDialogActions,
         MatDialogClose,
         MatSnackBarModule,
         ReactiveFormsModule,

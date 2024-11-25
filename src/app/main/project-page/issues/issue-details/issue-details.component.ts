@@ -18,17 +18,13 @@ import Quill from 'quill';
         MatIconModule,
         MatDatepickerModule,
         MatDateFnsModule,
-        JsonPipe,
-        DatePipe,
         ReactiveFormsModule,
     ],
     templateUrl: './issue-details.component.html',
     styleUrl: './issue-details.component.scss'
 })
-export class IssueDetailsComponent implements OnInit, OnDestroy {
+export class IssueDetailsComponent implements OnDestroy {
 
-  count = signal(0);
-  comp: Signal<number> = computed(() => this.count() + 1);
   quill!: Quill;
 
   constructor(private injector: Injector) {

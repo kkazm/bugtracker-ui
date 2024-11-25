@@ -21,8 +21,6 @@ export type Page<T> = {
     imports: [
         CommonModule,
         RouterOutlet,
-        RouterLink,
-        RouterLinkActive,
         MatSlideToggleModule,
         MatIconModule
     ],

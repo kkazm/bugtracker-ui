@@ -28,7 +28,6 @@ import { UsersTableDataSource, UsersTableItem } from './users-table-datasource';
     templateUrl: './users-table.component.html',
     styleUrls: ['./users-table.component.scss'],
     imports: [
-        RouterLink,
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,

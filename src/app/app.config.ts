@@ -28,7 +28,7 @@ export const appConfig: ApplicationConfig = {
      * in place of provideAnimationsAsync in the bootstrapApplication function
      * call.
      */
-    provideAnimationsAsync(),
+    provideAnimations(),
     provideHttpClient(
       withInterceptors([
         authenticationInterceptor
