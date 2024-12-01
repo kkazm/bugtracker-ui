@@ -44,9 +44,6 @@ export class IssuesTableDataSource extends DataSource<IssuesTableItem> {
       // stream for the data-table to consume.
       return merge(of(null), this.paginator.page, this.sort.sortChange)
         .pipe(
-          tap(val => {
-            console.log('Doing something') // TODO Delete this
-          }),
           map((val) => {
             if (!this.paginator) throw Error('Please set the paginator and sort on the data source before connecting.');
             const per_page = this.paginator?.pageSize;

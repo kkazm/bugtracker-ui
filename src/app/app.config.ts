@@ -11,12 +11,19 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { enUS, zhCN } from 'date-fns/locale';
 import localePl from '@angular/common/locales/pl';
 import { registerLocaleData } from '@angular/common';
+import { provideQuillConfig } from 'ngx-quill/config';
 
 // TODO
 registerLocaleData(localePl);
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideQuillConfig({
+      modules: {
+        syntax: true,
+      },
+      sanitize: true
+    }),
     // provideZoneChangeDetection({ eventCoalescing: true }),
     // provideRouter(routes, withRouterConfig({ onSameUrlNavigation: 'reload' })),
     provideRouter(routes),
