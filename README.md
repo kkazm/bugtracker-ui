@@ -1,21 +1,59 @@
-# ![](https://fonts.gstatic.com/s/i/materialiconsoutlined/bug_report/v12/24px.svg) kkazm/bugtracker-ui
+# BugtrackerUi
 
-A bug tracker with a web-based user interface, similar to Jira and Bugzilla. This repository is the web client built with Angular.
-
-The corresponding REST backend web service source code is [available here](https://github.com/kkazm/bugtracker).
-
-**Demo available online at <https://kkazm.ovh/bugtracker>**
-
-By default, the application expects a REST API at `http://localhost:8080`. This can be changed in the configuration file: TODO
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
 
 ## Development server
 
-Run `npx ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To start a local development server, run:
 
-## Build
+```bash
+ng serve
+```
 
-Run `npx ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-(Todo) ~~Run `npx ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).~~
+## Code scaffolding
 
-(Todo) ~~Run `npx ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.~~
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
+```
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
