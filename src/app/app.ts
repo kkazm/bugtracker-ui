@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, computed, effect, inject, Injector, signal} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,16 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('bugtracker-ui');
+  readonly title = signal('bugtracker-ui');
+  private injector = inject(Injector);
+  readonly eff = effect((onCleanup) => {
+    console.log("From effect!")
+    const interval = setInterval(() => console.log("HEllo interval!"), 2000);
+    onCleanup(() => {clearInterval(interval)});
+  });
+
+  hello() {
+    this.eff.destroy();
+  }
+
 }
