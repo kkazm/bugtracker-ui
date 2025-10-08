@@ -1,0 +1,28 @@
+<mat-toolbar>
+  <button matIconButton class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-icon>bug_report</mat-icon>
+  <span>Bugtracker</span>
+
+  <span class="example-spacer"></span>
+
+  <button matIconButton class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>home_outlined</mat-icon>
+  </button>
+
+  <button matIconButton class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon fontSet="material-icons-outlined">info</mat-icon>
+  </button>
+
+  <button matIconButton class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon fontSet="material-icons-outlined">delete</mat-icon>
+  </button>
+  <button matIconButton class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+
+<button matButton (click)="themeManager.setTheme('light')">Set light theme</button>
+<button matButton (click)="themeManager.setTheme('dark')">Set dark theme</button>
+<button matButton (click)="themeManager.setTheme('light dark')">Use system theme</button>
