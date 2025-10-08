@@ -1,0 +1,50 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <mat-icon>bug_report</mat-icon>
+      <span>Bugtracker</span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      @if (isHandset$ | async) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          matIconButton
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <mat-icon>bug_report</mat-icon>
+        <span>Bugtracker</span>
+      }
+
+      <span class="example-spacer"></span>
+
+      <button matIconButton class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>home_outlined</mat-icon>
+      </button>
+
+      <button matIconButton class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon fontSet="material-icons-outlined">info</mat-icon>
+      </button>
+
+      <button matIconButton class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+    <button matButton (click)="themeManager.setTheme('light')">Set light theme</button>
+    <button matButton (click)="themeManager.setTheme('dark')">Set dark theme</button>
+    <button matButton (click)="themeManager.setTheme('light dark')">Use system theme</button>
+
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

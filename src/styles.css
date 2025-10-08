@@ -6,5 +6,5 @@
 @layer theme, base, components, utilities;
 @import "tailwindcss/theme.css" layer(theme);
 /*Disable preflight — because it (kind of) breaks Angular Material */
-/*@import "tailwindcss/preflight.css" layer(base);*/
+@import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
