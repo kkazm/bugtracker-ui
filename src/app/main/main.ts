@@ -9,6 +9,7 @@ import {AsyncPipe} from '@angular/common';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
+import {IssueList} from '../issue-list/issue-list';
 
 @Component({
   selector: 'app-main',
@@ -19,13 +20,14 @@ import {map, shareReplay} from 'rxjs/operators';
     MatSidenavModule,
     MatListModule,
     AsyncPipe,
+    IssueList,
   ],
   templateUrl: './main.html',
   styleUrl: './main.scss'
 })
 export class Main {
-  private injector = inject(Injector);
   themeManager = inject(ThemeManager);
+  private injector = inject(Injector);
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
