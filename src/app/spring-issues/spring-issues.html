@@ -1,0 +1,85 @@
+<mat-card class="issues-card">
+  <mat-card-header>
+    <mat-card-title>Spring Framework issues</mat-card-title>
+    <mat-card-subtitle>
+      Live from
+      <a href="https://github.com/spring-projects/spring-framework/issues" target="_blank" rel="noopener">
+        spring-projects/spring-framework
+      </a>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    @if (loading()) {
+      <mat-progress-bar mode="indeterminate" />
+    }
+
+    @if (errored()) {
+      <p class="issues-error">Couldn't load issues — GitHub may be rate-limiting requests. Try again in a minute.</p>
+    }
+
+    <div class="issues-table-wrapper">
+      <table mat-table matSort matSortActive="created" matSortDirection="desc" matSortDisableClear
+             [dataSource]="issues()" class="issues-table">
+        <ng-container matColumnDef="number">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let row">
+            <a [href]="row.html_url" target="_blank" rel="noopener">#{{ row.number }}</a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Title</th>
+          <td mat-cell *matCellDef="let row" class="issues-title-cell">{{ row.title }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="state">
+          <th mat-header-cell *matHeaderCellDef>State</th>
+          <td mat-cell *matCellDef="let row">
+            <mat-chip [class.issues-chip-open]="row.state === 'open'"
+                      [class.issues-chip-closed]="row.state === 'closed'"
+                      [disableRipple]="true" [highlighted]="true">
+              {{ row.state }}
+            </mat-chip>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="user">
+          <th mat-header-cell *matHeaderCellDef>Reporter</th>
+          <td mat-cell *matCellDef="let row">{{ row.user?.login ?? '—' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="comments">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="comments">Comments</th>
+          <td mat-cell *matCellDef="let row">{{ row.comments }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="created_at">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="created">Created</th>
+          <td mat-cell *matCellDef="let row">{{ row.created_at | date: 'mediumDate' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="updated_at">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="updated">Updated</th>
+          <td mat-cell *matCellDef="let row">{{ row.updated_at | date: 'mediumDate' }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell issues-empty" [attr.colspan]="displayedColumns.length">
+            @if (!loading()) {
+              <span>No issues to display.</span>
+            }
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <mat-paginator [length]="resultsLength()"
+                   [pageSize]="20"
+                   [pageSizeOptions]="[10, 20, 50, 100]"
+                   aria-label="Select page of Spring Framework issues" />
+  </mat-card-content>
+</mat-card>

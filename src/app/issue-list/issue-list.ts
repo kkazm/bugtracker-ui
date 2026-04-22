@@ -27,8 +27,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 14, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
   {position: 15, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
   {position: 16, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 17, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 18, name: 'Boron', weight: 10.811, symbol: 'B'},
+  {position: 19, name: 'Carbon', weight: 12.0107, symbol: 'C'},
+  {position: 20, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
+  {position: 21, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
+  {position: 22, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
+  {position: 23, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 ];
-
 
 @Component({
   selector: 'app-issue-list',
@@ -40,6 +46,5 @@ export class IssueList {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
-
 
 }
