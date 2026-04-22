@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+.issues-card {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.issues-table-wrapper {
+  overflow-x: auto;
+}
+
+.issues-table {
+  width: 100%;
+}
+
+.issues-title-cell {
+  max-width: 520px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.issues-empty {
+  padding: 1rem;
+  text-align: center;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.issues-error {
+  color: var(--mat-sys-error);
+  margin: 0.5rem 0;
+}
+
+.issues-chip-open {
+  --mdc-chip-elevated-container-color: var(--mat-sys-tertiary-container);
+  --mdc-chip-label-text-color: var(--mat-sys-on-tertiary-container);
+}
+
+.issues-chip-closed {
+  --mdc-chip-elevated-container-color: var(--mat-sys-surface-variant);
+  --mdc-chip-label-text-color: var(--mat-sys-on-surface-variant);
+}

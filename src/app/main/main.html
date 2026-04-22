@@ -14,7 +14,6 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <!-- Add Content Here -->
     <mat-toolbar color="primary">
       @if (isHandset$ | async) {
         <button
@@ -42,10 +41,14 @@
         <mat-icon>share</mat-icon>
       </button>
     </mat-toolbar>
-    <button matButton (click)="themeManager.setTheme('light')">Set light theme</button>
-    <button matButton (click)="themeManager.setTheme('dark')">Set dark theme</button>
-    <button matButton (click)="themeManager.setTheme('light dark')">Use system theme</button>
 
-    <app-issue-list></app-issue-list>
+    <!-- Main content excluding toolbar -->
+    <div style="padding: 1rem">
+      <button matButton (click)="themeManager.setTheme('light')">Set light theme</button>
+      <button matButton (click)="themeManager.setTheme('dark')">Set dark theme</button>
+      <button matButton (click)="themeManager.setTheme('light dark')">Use system theme</button>
+
+      <app-issue-list></app-issue-list>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
