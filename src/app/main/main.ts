@@ -1,5 +1,4 @@
 import {Component, inject, Injector} from '@angular/core';
-import {ThemeManager} from '../theme-manager';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -10,6 +9,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 import {IssueList} from '../issue-list/issue-list';
+import {ThemeManager} from '../theme-manager';
 
 @Component({
   selector: 'app-main',
@@ -26,7 +26,7 @@ import {IssueList} from '../issue-list/issue-list';
   styleUrl: './main.scss'
 })
 export class Main {
-  themeManager = inject(ThemeManager);
+  themeManager = inject(ThemeManager)
   private injector = inject(Injector);
   private breakpointObserver = inject(BreakpointObserver);
 
