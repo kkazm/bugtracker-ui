@@ -40,6 +40,7 @@
     "@taiga-ui/layout": "^5.4.0",
     "@taiga-ui/styles": "^5.4.0",
     "@tailwindcss/postcss": "^4.2.4",
+    "less": "^4.6.4",
     "postcss": "^8.5.13",
     "rxjs": "~7.8.2",
     "tailwindcss": "^4.2.4",
