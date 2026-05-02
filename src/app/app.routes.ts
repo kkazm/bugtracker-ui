@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import {Main} from './main/main';
 import {SpringIssues} from './spring-issues/spring-issues';
-import {Hello} from './hello/hello';
 
 export const routes: Routes = [
   {
@@ -11,9 +10,5 @@ export const routes: Routes = [
   {
     path: 'spring-issues',
     component: SpringIssues
-  },
-  {
-    path: 'hello',
-    component: Hello
-  },
+  }
 ];
