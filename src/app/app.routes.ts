@@ -6,14 +6,14 @@ import TaigaDash from './taiga-dash/taiga-dash';
 export const routes: Routes = [
   {
     path: '',
+    component: TaigaDash
+  },
+  {
+    path: 'main',
     component: Main
   },
   {
     path: 'spring-issues',
     component: SpringIssues
   },
-  {
-    path: 'taiga',
-    component: TaigaDash
-  }
 ];
