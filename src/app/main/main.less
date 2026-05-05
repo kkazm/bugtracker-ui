@@ -1,0 +1,29 @@
+:host {
+  // Use TuiThemeColorService instead, this is just for demo purposes
+  --tui-theme-color: var(--tui-background-base-alt);
+  //--tui-theme-color: AccentColor;
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    --tui-theme-color: #111;
+  }
+}
+
+.drawer {
+  // Unnecessary when TuiThemeColorService is instead
+  //background: rgb(135, 206, 235);
+  //color: var(--tui-text-primary);
+}
+
+//aside::before {
+//  display: none;
+//}
+//
+//main::before {
+//  content: '';
+//}
+//
+//header::after {
+//  display: none;
+//}

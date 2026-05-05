@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
-import {Main} from './main/main';
+import {MainOld} from './main-old/main-old.component';
 import {SpringIssues} from './spring-issues/spring-issues';
-import TaigaDash from './taiga-dash/taiga-dash';
+import Main from './main/main';
 
 export const routes: Routes = [
   {
     path: '',
-    component: TaigaDash
+    component: Main
   },
   {
     path: 'main',
-    component: Main
+    component: MainOld
   },
   {
     path: 'spring-issues',
