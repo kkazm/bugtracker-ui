@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
-import {Main} from './main/main';
+import {MainOld} from './main-old/main-old.component';
 import {SpringIssues} from './spring-issues/spring-issues';
+import Main from './main/main';
 
 export const routes: Routes = [
   {
@@ -8,7 +9,11 @@ export const routes: Routes = [
     component: Main
   },
   {
+    path: 'main',
+    component: MainOld
+  },
+  {
     path: 'spring-issues',
     component: SpringIssues
-  }
+  },
 ];

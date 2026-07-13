@@ -8,3 +8,7 @@
 /*Disable preflight — because it (kind of) breaks Angular Material */
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
+
+* {
+  --tui-theme-color: var(--tui-background-base-alt);
+}

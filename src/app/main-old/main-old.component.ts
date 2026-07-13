@@ -1,0 +1,38 @@
+import {Component, inject, Injector} from '@angular/core';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {AsyncPipe} from '@angular/common';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {Observable} from 'rxjs';
+import {map, shareReplay} from 'rxjs/operators';
+import {IssueList} from '../issue-list/issue-list';
+import {ThemeManager} from '../theme-manager';
+
+@Component({
+  selector: 'app-main',
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    AsyncPipe,
+    IssueList,
+  ],
+  templateUrl: './main-old.component.html',
+  styleUrl: './main-old.component.scss'
+})
+export class MainOld {
+  themeManager = inject(ThemeManager)
+  private injector = inject(Injector);
+  private breakpointObserver = inject(BreakpointObserver);
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+}
