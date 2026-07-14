@@ -60,7 +60,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "postcss": "^8.5.3",
     "less": "^4.6.4",
-    "prettier": "3.8.3",
+    "prettier": "3.9.5",
     "typescript": "~5.9.3"
   }
 }
