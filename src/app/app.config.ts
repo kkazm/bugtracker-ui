@@ -12,9 +12,11 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideZoneChangeDetection({ eventCoalescing: true }), // TODO
     provideRouter(routes),
-    provideHttpClient(withXhr()),
-    provideTaiga(),
+    provideHttpClient(withXhr()), // TODO
+    provideTaiga({
+      scrollbars: 'native',
+    }),
   ],
 };
