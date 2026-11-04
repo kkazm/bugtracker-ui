@@ -1,0 +1,104 @@
+<main tuiNavigationMain>
+  <nav
+    compact
+    tuiSubheader
+    [style.position]="'sticky'"
+  >
+    <tui-breadcrumbs [itemsLimit]="10">
+      @for (item of breadcrumbs; track item) {
+        @if ($last) {
+          <strong
+            *tuiItem
+            tuiFade
+          >
+            {{ item }}
+          </strong>
+        }
+        @if (!$last) {
+          <button
+            *tuiItem
+            tuiLink
+            type="button"
+          >
+            {{ item }}
+          </button>
+        }
+      }
+    </tui-breadcrumbs>
+    <tui-tabs tuiFade>
+      <button
+        tuiTab
+        type="button"
+      >
+        Default view
+      </button>
+      <button
+        tuiTab
+        type="button"
+      >
+        Details
+      </button>
+      <button
+        tuiTab
+        type="button"
+      >
+        Followers
+      </button>
+    </tui-tabs>
+    <button
+      appearance="secondary"
+      tuiButton
+      type="button"
+    >
+      Secondary
+    </button>
+    <button
+      tuiButton
+      type="button"
+    >
+      Primary
+    </button>
+  </nav>
+  <ng-container>
+    @for (_ of '-'.repeat(10); track $index) {
+      <form
+        appearance="floating"
+        tuiCardLarge
+        tuiForm="m"
+        [style.grid-column]="'2 / span 7'"
+      >
+        <header tuiHeader>
+          <h2 tuiTitle>
+            Registration form
+            <span tuiSubtitle>Tell us about yourself</span>
+          </h2>
+        </header>
+        <tui-textfield>
+          <label tuiLabel>Name</label>
+          <input
+            placeholder="John Wick"
+            tuiInput
+          />
+        </tui-textfield>
+        <footer>
+          <button appearance="secondary" tuiButton type="button">
+            Cancel
+          </button>
+          <button tuiButton type="submit">
+            Ok
+          </button>
+        </footer>
+      </form>
+      <div
+        appearance="floating"
+        tuiCardLarge
+        [style.grid-column]="'span 3'"
+      >
+        <h2 tuiTitle>
+          Sidebar content
+          <span tuiSubtitle>Use CSS grid to position</span>
+        </h2>
+      </div>
+    }
+  </ng-container>
+</main>

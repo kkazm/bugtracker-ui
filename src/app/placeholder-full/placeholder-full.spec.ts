@@ -1,18 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PlaceholderFull } from './placeholder-full';
 
-import { IssueList } from './issue-list';
-
-describe('IssueList', () => {
-  let component: IssueList;
-  let fixture: ComponentFixture<IssueList>;
+describe('PlaceholderFull', () => {
+  let component: PlaceholderFull;
+  let fixture: ComponentFixture<PlaceholderFull>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IssueList]
-    })
-    .compileComponents();
+      imports: [PlaceholderFull],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(IssueList);
+    fixture = TestBed.createComponent(PlaceholderFull);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

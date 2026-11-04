@@ -1,16 +1,22 @@
-import {provideTaiga} from "@taiga-ui/core";
-import {ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection} from '@angular/core';
-import {provideRouter} from '@angular/router';
-import {provideHttpClient} from '@angular/common/http';
+import { provideTaiga } from '@taiga-ui/core';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZoneChangeDetection,
+} from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 
-import {routes} from './app.routes';
+import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideZoneChangeDetection({eventCoalescing: true}),
+    provideZoneChangeDetection({ eventCoalescing: true }), // TODO
     provideRouter(routes),
-    provideHttpClient(),
-    provideTaiga()
-  ]
+    provideHttpClient(withXhr()), // TODO
+    provideTaiga({
+      scrollbars: 'native',
+    }),
+  ],
 };

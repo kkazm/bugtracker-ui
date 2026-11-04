@@ -1,18 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import PlaceholderMain from './placeholder-main';
 
-import { MainOld } from './main-old.component';
-
-describe('Main', () => {
-  let component: MainOld;
-  let fixture: ComponentFixture<MainOld>;
+describe('PlaceholderMain', () => {
+  let component: PlaceholderMain;
+  let fixture: ComponentFixture<PlaceholderMain>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainOld]
-    })
-    .compileComponents();
+      imports: [PlaceholderMain],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(MainOld);
+    fixture = TestBed.createComponent(PlaceholderMain);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
